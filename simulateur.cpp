@@ -42,12 +42,12 @@ Simulateur::Simulateur()
         void Simulateur::ex_vidangeR2(){r2->vidange();}
         void Simulateur::ex_vidangeR3(){r3->vidange();}
 
-        void Simulateur::ex_pannepompe11(){}
-        void Simulateur::ex_pannepompe12(){}
-        void Simulateur::ex_pannepompe21(){}
-        void Simulateur::ex_pannepompe22(){}
-        void Simulateur::ex_pannepompe31(){}
-        void Simulateur::ex_pannepompe32(){}
+        void Simulateur::ex_pannepompe11(){ p11->panne();}
+        void Simulateur::ex_pannepompe12(){ p12->panne();}
+        void Simulateur::ex_pannepompe21(){ p21->panne();}
+        void Simulateur::ex_pannepompe22(){ p22->panne();}
+        void Simulateur::ex_pannepompe31(){ p31->panne();}
+        void Simulateur::ex_pannepompe32(){ p32->panne();}
 
 Simulateur::~Simulateur(){}
 

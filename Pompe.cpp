@@ -12,11 +12,21 @@ using namespace std;
 
         //permet d'activer ou de desactiver la pompe
     void Pompe::power(){
-        etat = 1-etat;
-        QString tmpNom;
-        if (etat) tmpNom = "Activée";
-        else tmpNom = "Desactivée";
-       qDebug()<<"La Pompe " << nom << " est en "<< tmpNom<< endl;
+         QString tmpNom;
+        if (etat == -1)
+        {
+            tmpNom = " Panne !";
+            qDebug()<<"La Pompe " << nom << " est en "<< tmpNom<< endl;
+
+        }
+
+        else  {
+               etat = 1-etat;
+
+               if (etat) tmpNom = "Activée";
+               else tmpNom = "Desactivée";
+               qDebug()<<"La Pompe " << nom << " est en "<< tmpNom<< endl;
+                  }
     }
 
         //permet de déclancher une panne

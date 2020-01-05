@@ -17,6 +17,8 @@ using namespace std;
         //permet de vider le reservoir
     void Reservoir :: vidange(){
         capacite = 0;
+        primaire->etat = 0;
+        secondaire->etat = 0;
     }
 
         //getter de la classe
