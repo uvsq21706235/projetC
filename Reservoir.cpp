@@ -7,7 +7,7 @@ using namespace std;
 
 
 
-    Reservoir ::Reservoir(int c, string name, Pompe*pp, Pompe* ps){
+    Reservoir ::Reservoir(int c, QString name, Pompe*pp, Pompe* ps){
         nom = name;
         capacite = c;
         primaire = pp;
@@ -19,6 +19,8 @@ using namespace std;
         capacite = 0;
         primaire->etat = 0;
         secondaire->etat = 0;
+         qDebug()<<"Vidange du Reservoir  " << nom << endl;
+
     }
 
         //getter de la classe
@@ -38,11 +40,11 @@ using namespace std;
         return secondaire->etat;
      }
 
-    int Reservoir:: get_capacite(){
+    int Reservoir::get_etatReservoir(){
         return capacite;
     }
 
-    string Reservoir::get_nom(){
+    QString Reservoir::get_nom(){
         return nom;
     }
 
@@ -55,7 +57,7 @@ using namespace std;
         int glob;
         if (v12.etat) {
             if (v23.etat){
-                glob = this->capacite + r2.get_capacite() + r3.get_capacite();
+                glob = this->capacite + r2.get_etatReservoir() + r3.get_etatReservoir();
                 if (glob/3 < MAX2){
                     this->capacite = glob;
                     r2.set_capacite(glob);
@@ -70,7 +72,7 @@ using namespace std;
                 }
             }
             else {
-                glob = this->capacite + r2.get_capacite();
+                glob = this->capacite + r2.get_etatReservoir();
                 if (glob/2 < MAX2){
                     r2.set_capacite(glob/2);
                     this->capacite = glob/2;
@@ -83,7 +85,7 @@ using namespace std;
         }
         else{
             if (v23.etat){
-                glob = r3.get_capacite() + r2.get_capacite();
+                glob = r3.get_etatReservoir() + r2.get_etatReservoir();
                 if (glob/2 < MAX2){
                     r2.set_capacite(glob/2);
                     r3.set_capacite(glob/2);

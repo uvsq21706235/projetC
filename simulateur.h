@@ -69,6 +69,26 @@ public :
     Simulateur();
    // Simulateur(Moteur * m1, Moteur * m2, Moteur *m3 );
     ~Simulateur();
+
+    int getEtatVanneVT12();
+    int getEtatVanneVT23();
+    int getEtatVanneV12();
+    int getEtatVanneV13();
+    int getEtatVanneV23();
+
+
+
+    int  getEtatPompep11();
+    int  getEtatPompep12();
+    int  getEtatPompep21();
+    int  getEtatPompep22();
+    int  getEtatPompep31();
+    int  getEtatPompep32();
+
+
+    int  getEtatReservoirR1();
+    int  getEtatReservoirR2();
+    int  getEtatReservoirR3();
 };
 
 #endif // SIMULATEUR_H

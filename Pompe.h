@@ -26,6 +26,8 @@ public:
         //permet de déclancher une panne
     void panne();
 
+    int get_etat();
+
         //destructeur de la classe Pompe
     ~Pompe();
 

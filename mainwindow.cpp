@@ -91,16 +91,45 @@ MainWindow::MainWindow(Simulateur &simi, QWidget *parent ) : QMainWindow(parent)
     setCentralWidget(m_mainWidget);
 
 }
-void  MainWindow::OnOffVanneVT12(){  s.infoVanneVT12(); }
-void  MainWindow::OnOffVanneVT23(){ s.infoVanneVT23();  }
-void  MainWindow::OnOffVanneV12() { s.infoVanneV12();   }
-void  MainWindow::OnOffVanneV13() { s.infoVanneV13();   }
-void  MainWindow::OnOffVanneV23() { s.infoVanneV23();   }
+void  MainWindow::OnOffVanneVT12(){  s.infoVanneVT12();
+                                     if (s.getEtatVanneVT12()) QMessageBox::information(this, " Information Vanne ", "La Vanne VT12 est ouverte ");
+                                    else   QMessageBox::warning(this, " Information Vanne ", "La Vanne VT12 est fermée ");
+                                   }
+void  MainWindow::OnOffVanneVT23(){ s.infoVanneVT23();
+                                    if (s.getEtatVanneVT23()) QMessageBox::information(this, " Information Vanne ", "La Vanne VT23 est ouverte ");
+                                   else   QMessageBox::warning(this, " Information Vanne ", "La Vanne VT23 est fermée ");
+                                  }
+void  MainWindow::OnOffVanneV12() { s.infoVanneV12();
+                                    if (s.getEtatVanneV12()) QMessageBox::information(this, " Information Vanne ", "La Vanne V12 est ouverte ");
+                                   else   QMessageBox::warning(this, " Information Vanne ", "La Vanne V12 est fermée ");
+                                  }
+void  MainWindow::OnOffVanneV13() { s.infoVanneV13();
+                                    if (s.getEtatVanneV13()) QMessageBox::information(this, " Information Vanne ", "La Vanne V13 est ouverte ");
+                                   else   QMessageBox::warning(this, " Information Vanne ", "La Vanne V13 est fermée ");
+                                  }
+void  MainWindow::OnOffVanneV23() { s.infoVanneV23();
+                                    if (s.getEtatVanneV23()) QMessageBox::information(this, " Information Vanne ", "La Vanne V23 est ouverte ");
+                                   else   QMessageBox::warning(this, " Information Vanne ", "La Vanne V23 est fermée ");
+                                  }
 
 
-void  MainWindow::OnOffPompeP12() { s.infoPompe12();   }
-void  MainWindow::OnOffPompeP22() { s.infoPompe22();   }
-void  MainWindow::OnOffPompeP32() { s.infoPompe32();   }
+void  MainWindow::OnOffPompeP12() { s.infoPompe12(); int tmp = s.getEtatPompep12();
+                                    if (tmp==1) QMessageBox::information(this, " Information Pompe ", "La Pompe P12 est Activée ");
+                                   else { if (tmp == 0 ) QMessageBox::warning(this, " Information Pompe ", "La Pompe P12 est Desactivée ");
+                                          else QMessageBox::critical(this, " Information Pompe ", "La Pompe P12 est en Panne ");
+                                        }
+                                  }
+
+void  MainWindow::OnOffPompeP22() { s.infoPompe22();  int tmp = s.getEtatPompep22();
+                                    if (tmp ==1) QMessageBox::information(this, " Information Pompe ", "La Pompe P22 est Activée ");
+                                   else { if (tmp == 0 ) QMessageBox::warning(this, " Information Pompe ", "La Pompe P22 est Desactivée ");
+                                          else QMessageBox::critical(this, " Information Pompe ", "La Pompe P22 est en Panne ");
+                                        } }
+void  MainWindow::OnOffPompeP32() { s.infoPompe32();   int tmp = s.getEtatPompep32();
+                                    if (tmp==1) QMessageBox::information(this, " Information Pompe ", "La Pompe P32 est Activée ");
+                                   else { if (tmp == 0 ) QMessageBox::warning(this, " Information Pompe ", "La Pompe P32 est Desactivée ");
+                                          else QMessageBox::critical(this, " Information Pompe ", "La Pompe P32 est en Panne ");
+                                        }}
 MainWindow::~MainWindow()
 {
 }

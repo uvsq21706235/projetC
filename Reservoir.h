@@ -3,7 +3,8 @@
 
 #include "Pompe.h"
 #include "Vanne.h"
-#include <string>
+#include <QString>
+#include <QDebug>
 #include <iostream>
 
 using namespace std;
@@ -17,7 +18,7 @@ class Reservoir{
 
 private:
 
-    string nom;
+    QString nom;
     int capacite;
     Pompe *primaire;
     Pompe *secondaire;
@@ -28,7 +29,7 @@ public:
         // et qui créé les deux pompes associées au moteur en appelant le constructeur
         // la variable etat est à true si le reservoir est plein, false sinon
 
-    Reservoir(int c=0, string name="Tank0", Pompe *pp=nullptr, Pompe *ps=nullptr);
+    Reservoir(int c=0, QString name="Tank0", Pompe *pp=nullptr, Pompe *ps=nullptr);
 
         //getter de la classe
 
@@ -36,9 +37,9 @@ public:
     int get_etat_pompe_primaire();
     int get_etat_pompe_secondaire();
 
-    int get_capacite();
+    int get_etatReservoir();
 
-    string get_nom();
+    QString get_nom();
 
         //setter de la classe
     void set_capacite(int i);

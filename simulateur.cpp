@@ -49,5 +49,29 @@ Simulateur::Simulateur()
         void Simulateur::ex_pannepompe31(){ p31->panne();}
         void Simulateur::ex_pannepompe32(){ p32->panne();}
 
+
+        // getter VANNE
+        int Simulateur::getEtatVanneVT12(){ return VT12->get_etat();}
+        int Simulateur::getEtatVanneVT23(){ return VT23->get_etat();}
+        int Simulateur::getEtatVanneV12(){ return V12->get_etat(); }
+        int Simulateur::getEtatVanneV13(){ return V13->get_etat(); }
+        int Simulateur::getEtatVanneV23(){ return V23->get_etat(); }
+
+        //getter POMPE
+        int Simulateur::getEtatPompep11(){ return p11->get_etat(); }
+        int Simulateur::getEtatPompep12(){ return p12->get_etat(); }
+        int Simulateur::getEtatPompep21(){ return p21->get_etat(); }
+        int Simulateur::getEtatPompep22(){ return p22->get_etat(); }
+        int Simulateur::getEtatPompep31(){ return p31->get_etat(); }
+        int Simulateur::getEtatPompep32(){ return p32->get_etat(); }
+
+        //getter RESERVOIR
+        int  Simulateur::getEtatReservoirR1(){ return r1->get_etatReservoir(); }
+        int  Simulateur::getEtatReservoirR2(){ return r2->get_etatReservoir(); }
+        int  Simulateur::getEtatReservoirR3(){ return r3->get_etatReservoir(); }
+
+        //FLUX DE CHAQUE MOTEUR
+        //(implementation)
+
 Simulateur::~Simulateur(){}
 

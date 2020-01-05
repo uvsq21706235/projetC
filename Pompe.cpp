@@ -27,13 +27,15 @@ using namespace std;
                else tmpNom = "Desactivée";
                qDebug()<<"La Pompe " << nom << " est en "<< tmpNom<< endl;
                   }
-    }
+            }
 
         //permet de déclancher une panne
     void Pompe::panne(){
         etat = -1;
-    }
+        qDebug()<<"Panne du la Pompe  " << nom << endl;
+         }
 
+    int Pompe::get_etat(){return etat;}
 
         //destructeur de la classe Pompe
     Pompe::~Pompe(){}
