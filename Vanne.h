@@ -19,6 +19,7 @@ Q_OBJECT
 private:
         // etat égal à 1 si la vanne est fermée, à 0 si la vanne est ouverte,
     int etat;
+    QString nom;
 
 public slots:
  void power();
@@ -27,7 +28,7 @@ public slots:
 
 public:
    // constructeur de la classe Vanne
-Vanne();
+Vanne(QString="");
         // destructeur de la classe Vanne
 
     ~Vanne();

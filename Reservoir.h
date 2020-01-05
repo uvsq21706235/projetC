@@ -27,7 +27,8 @@ public:
         // constructeur de la classe Reservoir qui prend en argument la capacité du reservoir
         // et qui créé les deux pompes associées au moteur en appelant le constructeur
         // la variable etat est à true si le reservoir est plein, false sinon
-    Reservoir(int c=0, string name="Tank0", Pompe *pp, Pompe* ps);
+
+    Reservoir(int c=0, string name="Tank0", Pompe *pp=nullptr, Pompe *ps=nullptr);
 
         //getter de la classe
 

@@ -5,6 +5,11 @@
 #include "Pompe.h"
 #include "Vanne.h"
 #include "Moteur.h"
+#include <QWidget>
+#include  <QDebug>
+#include <QMessageBox>
+#include <QDebug>
+
 #include <iostream>
 
 
@@ -34,25 +39,27 @@ class Simulateur
    Vanne *V23;
 
 
-public:
+public slots :
+
+
+    //infos Vannes
+    void infoVanneVT12( );
+    void infoVanneVT23();
+    void infoVanneV12();
+    void infoVanneV13();
+    void infoVanneV23();
+
+   /* Pompe& getPompe11();
+    Pompe& getPompe12();
+    Pompe& getPompe21();
+    Pompe& getPompe22();
+    Pompe& getPompe31();
+    Pompe& getPompe32();
+    */
+public :
     Simulateur();
    // Simulateur(Moteur * m1, Moteur * m2, Moteur *m3 );
     ~Simulateur();
-
-    //getters
-    Vanne& getVanneVT12() { return VT12; }
-    Vanne& getVanneVT23() { return VT23; }
-    Vanne& getVanneV12() { return V12; }
-    Vanne& getVanneV13() { return V13; }
-    Vanne& getVanneV23() { return V23; }
-
-    Pompe& getPompe11() { return p11; }
-    Pompe& getPompe12() { return p12; }
-    Pompe& getPompe21() { return p21; }
-    Pompe& getPompe22() { return p22; }
-    Pompe& getPompe31() { return p31; }
-    Pompe& getPompe32() { return p32; }
-
 };
 
 #endif // SIMULATEUR_H

@@ -2,12 +2,10 @@
 
 #include <QDebug>
 #include <QFrame>
-#include <QDialog>
-#include "Vanne.h"
+#include <simulateur.h>
 
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
     setWindowTitle("Simulateur d'avion de chasse ");
   //  m_customBtn = new CustomButton(this);
@@ -25,17 +23,21 @@ MainWindow::MainWindow(QWidget *parent)
 
     QPushButton *vt12 = new QPushButton( "VT12", m_mainWidget );
     QPushButton *vt23 = new QPushButton("VT23",  m_mainWidget);
-
-
+    vt12->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+    vt23->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
     QPushButton *p12 = new QPushButton("P12", m_mainWidget);
     QPushButton *p22 = new QPushButton( "P22", m_mainWidget);
     QPushButton *p32 = new QPushButton( "P32", m_mainWidget);
-
+    p12->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+    p22->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+    p32->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 
     QPushButton *v12 = new QPushButton( "V12", m_mainWidget);
     QPushButton *v13 = new QPushButton( "V13",m_mainWidget );
     QPushButton *v23 = new QPushButton("V23", m_mainWidget );
-
+    v12->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+    v13->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+    v23->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 
 
    m_vLayout1->addWidget(vt12);
@@ -63,27 +65,32 @@ MainWindow::MainWindow(QWidget *parent)
     m_vLayout3->addWidget(v23);
 
 
-   // m_mainWidget->setLayout(m_hLayout1);
+
     m_mainWidget->setLayout(m_hLayout);
 
-
-      // CustomButton* btn =  new CustomButton(this, "boutton 1");
-     //   m_listBtn.append(btn ); // mettre dans une liste pour faire des actions dessus
-
-
-        //btn->move(i*30,0);
-       /* if (i == 1)
-
-            m_vLayout->addSpacing(30); // espace entre 2 bouttons
+  /*  //Connection boutons et classe -> Ouvert et Fermer d'une Vanne
+    QWidget::connect(vt12, SIGNAL(clicked()), this, SLOT(OnOffVanneVT12()) );
+    QWidget::connect(vt23, SIGNAL(clicked()), this, SLOT(OnOffVanneVT23()) );
+    QWidget::connect(v12, SIGNAL(clicked()), this, SLOT(OnOffVanneV12())   );
+    QWidget::connect(v13, SIGNAL(clicked()), this, SLOT(OnOffVanneV13())   );
+    QWidget::connect(v23, SIGNAL(clicked()), this, SLOT(OnOffVanneV23())   );
 
 
-        */
-
-
-
-  setCentralWidget(m_mainWidget);
+*/
+    //Connection boutons et classe -> Arrêt , Panne  et Marche d'une Pompe
+    QWidget::connect(vt12, SIGNAL(clicked()), this, SLOT(OnOffVanneVT12()) );
+    QWidget::connect(vt23, SIGNAL(clicked()), this, SLOT(OnOffVanneVT23()) );
+    QWidget::connect(v12, SIGNAL(clicked()), this, SLOT(OnOffVanneV12())   );
+    QWidget::connect(v13, SIGNAL(clicked()), this, SLOT(OnOffVanneV13())   );
+    QWidget::connect(v23, SIGNAL(clicked()), this, SLOT(OnOffVanneV23())   );
+    setCentralWidget(m_mainWidget);
 
 }
+void  MainWindow::OnOffVanneVT12(){  s.infoVanneVT12(); }
+void  MainWindow::OnOffVanneVT23(){ s.infoVanneVT23();}
+void  MainWindow::OnOffVanneV12(){ s.infoVanneV12();  }
+void  MainWindow::OnOffVanneV13(){ s.infoVanneV13();  }
+void  MainWindow::OnOffVanneV23(){ s.infoVanneV23();  }
 
 
 

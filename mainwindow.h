@@ -2,10 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "custombutton.h"
+
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QPushButton>
+#include "simulateur.h"
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -14,9 +16,18 @@ public:
     MainWindow(QWidget *parent = nullptr);
 
     ~MainWindow();
+public slots:
+    void  OnOffVanneVT12();
+    void  OnOffVanneVT23();
+    void  OnOffVanneV12();
+    void  OnOffVanneV13();
+    void  OnOffVanneV23();
+
+
 
 private :
     QString nom;
+    Simulateur s;
 
  //  CustomButton  * m_customBtn;
 

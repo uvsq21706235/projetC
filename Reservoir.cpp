@@ -7,7 +7,7 @@ using namespace std;
 
 
 
-    Reservoir :: Reservoir(int c, string name, Pompe* pp, Pompe* ps){
+    Reservoir ::Reservoir(int c, string name, Pompe*pp, Pompe* ps){
         nom = name;
         capacite = c;
         primaire = pp;
@@ -29,14 +29,12 @@ using namespace std;
     }
 
     int Reservoir::get_etat_pompe_primaire(){
-        return primaire.etat;
-
+        return primaire->etat;
     }
 
     int Reservoir::get_etat_pompe_secondaire(){
-        return secondaire.etat;
-
-    }
+        return secondaire->etat;
+     }
 
     int Reservoir:: get_capacite(){
         return capacite;

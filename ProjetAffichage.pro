@@ -20,7 +20,6 @@ SOURCES += \
     Moteur.cpp \
     Reservoir.cpp \
     Vanne.cpp \
-    custombutton.cpp \
     main.cpp \
     mainwindow.cpp \
     simulateur.cpp
@@ -30,7 +29,6 @@ HEADERS += \
     Moteur.h \
     Reservoir.h \
     Vanne.h \
-    custombutton.h \
     mainwindow.h \
     simulateur.h
 

@@ -1,5 +1,6 @@
 #include "simulateur.h"
 
+
 Simulateur::Simulateur()
     {
 
@@ -19,13 +20,27 @@ Simulateur::Simulateur()
         m3 = new Moteur(*r3);
 
 
-         VT12 = new Vanne();
-         VT23 = new Vanne();
-         V12 = new Vanne();
-         V13 = new Vanne();
-         V23 = new Vanne();
+         VT12 = new Vanne("VT12");
+         VT23 = new Vanne("VT23");
+         V12 = new Vanne("V12");
+         V13 = new Vanne("V13");
+         V23 = new Vanne("V23");
+}
 
-    }
+        void Simulateur::infoVanneVT12() { VT12->power();}
+        void Simulateur::infoVanneVT23() { VT23->power();}
+        void Simulateur::infoVanneV12()  { V12->power();}
+        void Simulateur::infoVanneV13()  { V13->power();}
+        void Simulateur::infoVanneV23()  { V23->power();}
 
+
+        /*
+         Pompe&  Simulateur::getPompe11() { return *p11; }
+         Pompe&  Simulateur::getPompe12() { return *p12; }
+         Pompe&  Simulateur::getPompe21() { return *p21; }
+         Pompe&  Simulateur::getPompe22() { return *p22; }
+         Pompe&  Simulateur::getPompe31() { return *p31; }
+         Pompe&  Simulateur::getPompe32() { return *p32; }
+        */
 Simulateur::~Simulateur(){}
 
