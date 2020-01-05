@@ -4,12 +4,12 @@
 Simulateur::Simulateur()
     {
 
-        p11 = new Pompe(1);
-        p12 = new Pompe;
-        p21 = new Pompe(1);
-        p22 = new Pompe;
-        p31 = new Pompe(1);
-        p32 = new Pompe;
+        p11 = new Pompe( "p11",1);
+        p12 = new Pompe("p12");
+        p21 = new Pompe("p21",1);
+        p22 = new Pompe("p22");
+        p31 = new Pompe("p31",1);
+        p32 = new Pompe("p32");
 
         r1 = new Reservoir(100, "Tank1", p11, p12);
         r2 = new Reservoir(50, "Tank2", p21, p22);
@@ -34,13 +34,9 @@ Simulateur::Simulateur()
         void Simulateur::infoVanneV23()  { V23->power();}
 
 
-        /*
-         Pompe&  Simulateur::getPompe11() { return *p11; }
-         Pompe&  Simulateur::getPompe12() { return *p12; }
-         Pompe&  Simulateur::getPompe21() { return *p21; }
-         Pompe&  Simulateur::getPompe22() { return *p22; }
-         Pompe&  Simulateur::getPompe31() { return *p31; }
-         Pompe&  Simulateur::getPompe32() { return *p32; }
-        */
+        void Simulateur::infoPompe12() { p12->power();}
+        void Simulateur::infoPompe22() { p22->power();}
+        void Simulateur::infoPompe32() { p32->power();}
+
 Simulateur::~Simulateur(){}
 

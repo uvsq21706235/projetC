@@ -24,6 +24,10 @@ public slots:
     void  OnOffVanneV23();
 
 
+    void  OnOffPompeP12();
+    void  OnOffPompeP22();
+    void  OnOffPompeP32();
+
 
 private :
     QString nom;

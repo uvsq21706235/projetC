@@ -49,13 +49,11 @@ public slots :
     void infoVanneV13();
     void infoVanneV23();
 
-   /* Pompe& getPompe11();
-    Pompe& getPompe12();
-    Pompe& getPompe21();
-    Pompe& getPompe22();
-    Pompe& getPompe31();
-    Pompe& getPompe32();
-    */
+    void  infoPompe12();
+    void  infoPompe22();
+    void  infoPompe32();
+
+
 public :
     Simulateur();
    // Simulateur(Moteur * m1, Moteur * m2, Moteur *m3 );

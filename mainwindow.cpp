@@ -68,15 +68,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
     m_mainWidget->setLayout(m_hLayout);
 
-  /*  //Connection boutons et classe -> Ouvert et Fermer d'une Vanne
-    QWidget::connect(vt12, SIGNAL(clicked()), this, SLOT(OnOffVanneVT12()) );
-    QWidget::connect(vt23, SIGNAL(clicked()), this, SLOT(OnOffVanneVT23()) );
-    QWidget::connect(v12, SIGNAL(clicked()), this, SLOT(OnOffVanneV12())   );
-    QWidget::connect(v13, SIGNAL(clicked()), this, SLOT(OnOffVanneV13())   );
-    QWidget::connect(v23, SIGNAL(clicked()), this, SLOT(OnOffVanneV23())   );
+   //Connection boutons et classe -> Ouvert et Fermer d'une Vanne
+    QWidget::connect(p12, SIGNAL(clicked()), this, SLOT(OnOffPompeP12()) );
+    QWidget::connect(p22, SIGNAL(clicked()), this, SLOT(OnOffPompeP22()) );
+    QWidget::connect(p32, SIGNAL(clicked()), this, SLOT(OnOffPompeP32())   );
 
 
-*/
+
+
     //Connection boutons et classe -> Arrêt , Panne  et Marche d'une Pompe
     QWidget::connect(vt12, SIGNAL(clicked()), this, SLOT(OnOffVanneVT12()) );
     QWidget::connect(vt23, SIGNAL(clicked()), this, SLOT(OnOffVanneVT23()) );
@@ -87,13 +86,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
 }
 void  MainWindow::OnOffVanneVT12(){  s.infoVanneVT12(); }
-void  MainWindow::OnOffVanneVT23(){ s.infoVanneVT23();}
-void  MainWindow::OnOffVanneV12(){ s.infoVanneV12();  }
-void  MainWindow::OnOffVanneV13(){ s.infoVanneV13();  }
-void  MainWindow::OnOffVanneV23(){ s.infoVanneV23();  }
+void  MainWindow::OnOffVanneVT23(){ s.infoVanneVT23();  }
+void  MainWindow::OnOffVanneV12() { s.infoVanneV12();   }
+void  MainWindow::OnOffVanneV13() { s.infoVanneV13();   }
+void  MainWindow::OnOffVanneV23() { s.infoVanneV23();   }
 
 
-
+void  MainWindow::OnOffPompeP12() { s.infoPompe12();   }
+void  MainWindow::OnOffPompeP22() { s.infoPompe22();   }
+void  MainWindow::OnOffPompeP32() { s.infoPompe32();   }
 MainWindow::~MainWindow()
 {
 }
