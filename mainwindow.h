@@ -8,6 +8,7 @@
 #include <QPushButton>
 #include "simulateur.h"
 
+
 class MainWindow : public QMainWindow
 {
     friend class Window2;

@@ -91,16 +91,16 @@ Window2::Window2(Simulateur &simi, QWidget *parent) : QMainWindow(parent)
 
 }
 //vidange reservoir
-void Window2::VidangeReservoir1(){ s.ex_vidangeR1();}
-void  Window2::VidangeReservoir2(){s.ex_vidangeR2();}
-void  Window2::VidangeReservoir3(){s.ex_vidangeR3();}
+void Window2::VidangeReservoir1(){ s.ex_vidangeR1();    QMessageBox::critical(this, "  Exercice pilote ", "Vidange du reservoir Tank 1 ");}
+void  Window2::VidangeReservoir2(){s.ex_vidangeR2();    QMessageBox::critical(this, "  Exercice pilote ", "Vidange du reservoir Tank 2 ");}
+void  Window2::VidangeReservoir3(){s.ex_vidangeR3();    QMessageBox::critical(this, "  Exercice pilote ", "Vidange du reservoir Tank 3 ");}
 
  //panne Pompe
-void  Window2::PannePompe11(){s.ex_pannepompe11();}
-void  Window2::PannePompe12(){s.ex_pannepompe12();}
-void  Window2::PannePompe21(){s.ex_pannepompe21();}
- void  Window2::PannePompe22(){s.ex_pannepompe22();}
- void  Window2::PannePompe31(){s.ex_pannepompe31();}
- void  Window2::PannePompe32(){s.ex_pannepompe32();}
+void  Window2::PannePompe11(){s.ex_pannepompe11();   QMessageBox::critical(this, "  Exercice pilote ", "Injection Panne dans la pompe P11 ");}
+void  Window2::PannePompe12(){s.ex_pannepompe12();   QMessageBox::critical(this, "  Exercice pilote ", "Injection Panne dans la pompe P12 ");}
+void  Window2::PannePompe21(){s.ex_pannepompe21();   QMessageBox::critical(this, "  Exercice pilote ", "Injection Panne dans la pompe P21 ");}
+ void  Window2::PannePompe22(){s.ex_pannepompe22();  QMessageBox::critical(this, "  Exercice pilote ", "Injection Panne dans la pompe P22 ");}
+ void  Window2::PannePompe31(){s.ex_pannepompe31();  QMessageBox::critical(this, "  Exercice pilote ", "Injection Panne dans la pompe P31 ");}
+ void  Window2::PannePompe32(){s.ex_pannepompe32();  QMessageBox::critical(this, "  Exercice pilote ", "Injection Panne dans la pompe P32 ");}
 
  Window2::~Window2(){};

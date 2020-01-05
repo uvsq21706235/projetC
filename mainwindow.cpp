@@ -7,6 +7,7 @@
 
 MainWindow::MainWindow(Simulateur &simi, QWidget *parent ) : QMainWindow(parent)
 {
+
       this->s = simi;
 
     setWindowTitle("Simulateur d'avion de chasse ");
