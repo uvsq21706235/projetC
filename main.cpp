@@ -3,20 +3,18 @@
 #include <QPushButton>
 #include <simulateur.h>
 #include <QDialog>
+#include "window2.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-        MainWindow w;
+        Simulateur s;
 
-        w.show();
+        Window2 *f = new Window2(s);
+        MainWindow *w = new MainWindow(s);
 
-        QWidget fenetre;
-        QPushButton * bouton = new QPushButton ("ouvrir", &fenetre );
-        QDialog secondeFenetre (&fenetre);
-        QWidget::connect(bouton, SIGNAL(clicked()), &secondeFenetre, SLOT(exec()));
-        fenetre.show();
-
+        f->show();
+        w->show();
 
     return a.exec();
 }

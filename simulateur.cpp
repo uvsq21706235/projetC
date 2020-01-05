@@ -38,5 +38,16 @@ Simulateur::Simulateur()
         void Simulateur::infoPompe22() { p22->power();}
         void Simulateur::infoPompe32() { p32->power();}
 
+        void Simulateur::ex_vidangeR1(){r1->vidange(); }
+        void Simulateur::ex_vidangeR2(){r2->vidange();}
+        void Simulateur::ex_vidangeR3(){r3->vidange();}
+
+        void Simulateur::ex_pannepompe11(){}
+        void Simulateur::ex_pannepompe12(){}
+        void Simulateur::ex_pannepompe21(){}
+        void Simulateur::ex_pannepompe22(){}
+        void Simulateur::ex_pannepompe31(){}
+        void Simulateur::ex_pannepompe32(){}
+
 Simulateur::~Simulateur(){}
 

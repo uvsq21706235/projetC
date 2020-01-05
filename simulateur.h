@@ -53,6 +53,17 @@ public slots :
     void  infoPompe22();
     void  infoPompe32();
 
+    void ex_vidangeR1();
+    void ex_vidangeR2();
+    void ex_vidangeR3();
+
+    void ex_pannepompe11();
+    void ex_pannepompe12();
+    void ex_pannepompe21();
+    void ex_pannepompe22();
+    void ex_pannepompe31();
+    void ex_pannepompe32();
+
 
 public :
     Simulateur();

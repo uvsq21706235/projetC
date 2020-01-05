@@ -5,8 +5,10 @@
 #include <simulateur.h>
 
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
+MainWindow::MainWindow(Simulateur &simi, QWidget *parent ) : QMainWindow(parent)
 {
+      this->s = simi;
+
     setWindowTitle("Simulateur d'avion de chasse ");
   //  m_customBtn = new CustomButton(this);
 
@@ -35,15 +37,18 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     QPushButton *v12 = new QPushButton( "V12", m_mainWidget);
     QPushButton *v13 = new QPushButton( "V13",m_mainWidget );
     QPushButton *v23 = new QPushButton("V23", m_mainWidget );
+
     v12->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
     v13->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
     v23->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 
 
    m_vLayout1->addWidget(vt12);
+
    m_vLayout1->addSpacing(50);
 
    m_vLayout2->addSpacing(150);
+
    m_vLayout3->addWidget(vt23);
    m_vLayout3->addSpacing(50);
 
@@ -63,6 +68,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_hLayout->addLayout(m_vLayout3);
     m_vLayout3->addWidget(p32);
     m_vLayout3->addWidget(v23);
+
 
 
 
