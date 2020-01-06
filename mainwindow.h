@@ -7,11 +7,11 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 #include "simulateur.h"
+#include "window2.h"
 
 
 class MainWindow : public QMainWindow
 {
-    friend class Window2;
     Q_OBJECT
 
 public:

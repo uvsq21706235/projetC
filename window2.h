@@ -16,6 +16,7 @@ class Window2 : public QMainWindow{
 
 public:
     Window2(Simulateur &simi ,QWidget *parent = nullptr);
+    void update();
 
     ~Window2();
 public slots:
@@ -36,8 +37,7 @@ public slots:
 private :
     QString nom;
     Simulateur s;
-
-    QString info;
+    QTextEdit *txt;
 
  //  CustomButton  * m_customBtn;
 
