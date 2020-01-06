@@ -13,6 +13,7 @@
 #include <fstream>
 #include <string>
 #include <QFile>
+#include "window2.h"
 using namespace std;
 
 
@@ -21,6 +22,7 @@ class Window3 : public QMainWindow{
 
 private:
     Simulateur s;
+    string username;
     QGridLayout *layout;
     QWidget *test;
 
@@ -31,6 +33,8 @@ public:
 
  public slots:
     void identifier();
+    void entrainement();
+    void historique();
 };
 
 #endif // WINDOW3_H
