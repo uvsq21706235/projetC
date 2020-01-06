@@ -90,6 +90,13 @@ public :
     int  getEtatReservoirR2();
     int  getEtatReservoirR3();
 
+    int getPompeM1();
+    int getPompeM2();
+    int getPompeM3();
+    QString getResM1();
+    QString getResM2();
+    QString getResM3();
+
     QString getEtat();
 };
 

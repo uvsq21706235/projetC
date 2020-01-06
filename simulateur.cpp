@@ -70,6 +70,14 @@ Simulateur::Simulateur()
         int  Simulateur::getEtatReservoirR2(){ return r2->get_etatReservoir(); }
         int  Simulateur::getEtatReservoirR3(){ return r3->get_etatReservoir(); }
 
+        //getter MOTEUR
+        int Simulateur::getPompeM1(){return m1->getPompe();}
+        int Simulateur::getPompeM2(){return m2->getPompe();}
+        int Simulateur::getPompeM3(){return m3->getPompe();}
+        QString Simulateur::getResM1(){return m1->getReservoir()->get_nom();}
+        QString Simulateur::getResM2(){return m2->getReservoir()->get_nom();}
+        QString Simulateur::getResM3(){return m3->getReservoir()->get_nom();}
+
         QString Simulateur::getEtat(){
             QString tmp = "<html> <body>";
 
@@ -112,8 +120,16 @@ Simulateur::Simulateur()
             else tmp += "vanneV23 est ouverte <br>";
             if(getEtatVanneVT12()) tmp += "vanneVT12 est fermée <br>";
             else tmp += "vanneVT12 est ouverte <br>";
-            if(getEtatVanneVT23()) tmp += "vanneVT23 est fermée <br>";
-            else tmp += "vanneVT23 est ouverte <br>";
+            if(getEtatVanneVT23()) tmp += "vanneVT23 est fermée <br><br>";
+            else tmp += "vanneVT23 est ouverte <br><br>";
+
+            //initialisation avec l'etat des moteurs
+            if(getPompeM1())tmp += "moteur1 approvisionné par la pompe primaire de " + getResM1() +"<br>";
+            else tmp += "moteur1 approvisionné par la pompe secondaire de " + getResM1() + "<br>";
+            if(getPompeM2())tmp += "moteur2 approvisionné par la pompe primaire de " + getResM2() +"<br>";
+            else tmp += "moteur2 approvisionné par la pompe secondaire de " + getResM2() + "<br>";
+            if(getPompeM3())tmp += "moteur3 approvisionné par la pompe primaire de " + getResM3() +"<br><br>";
+            else tmp += "moteur3 approvisionné par la pompe secondaire de " + getResM3() + "<br><br>";
 
 
             tmp += "</body> </html>";

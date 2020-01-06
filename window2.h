@@ -8,7 +8,6 @@
 #include <QTextEdit>
 #include "simulateur.h"
 #include "mainwindow.h"
-#include "mywidget.h"
 
 
 class Window2 : public QMainWindow{

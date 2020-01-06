@@ -21,7 +21,12 @@ public:
         //changement du reservoir d'origine
     void set_reservoir(Reservoir &res);
 
+        //changement de la pompe d'origine
     void set_chemin();
+
+        //getters
+    Reservoir* getReservoir(){return origine;}
+    int getPompe(){return chemin;}
 
         //alimentation du moteur
     void alimentation();
