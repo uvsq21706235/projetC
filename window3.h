@@ -22,7 +22,7 @@ class Window3 : public QMainWindow{
 
 private:
     Simulateur s;
-    string username;
+    string nom;
     QGridLayout *layout;
     QWidget *test;
 
@@ -33,6 +33,7 @@ public:
 
  public slots:
     void identifier();
+    void deconnexion();
     void entrainement();
     void historique();
 };

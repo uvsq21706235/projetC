@@ -10,10 +10,12 @@ Window3::Window3(Simulateur &simi, QWidget *parent)
     layout = new QGridLayout(this);
 
     QPushButton *boutonid = new QPushButton("s'identifier", test);
+    QPushButton *boutondec = new QPushButton("deconnexion", test);
     QPushButton *boutonhist = new QPushButton("historique", test);
     QPushButton *boutonex = new QPushButton("s'entraîner", test);
 
-    layout->addWidget(boutonid, 1 ,4);
+    layout->addWidget(boutonid, 1 ,1);
+    layout->addWidget(boutondec, 1, 2);
     layout->addWidget(boutonhist, 2, 1, 1, 2);
     layout->addWidget(boutonex, 3, 1, 1, 2);
 
@@ -21,6 +23,7 @@ Window3::Window3(Simulateur &simi, QWidget *parent)
     setCentralWidget(test);
 
    QWidget::connect(boutonid, SIGNAL(clicked()), this, SLOT(identifier()));
+   QWidget::connect(boutondec, SIGNAL(clicked()), this, SLOT(deconnexion()));
    QWidget::connect(boutonex, SIGNAL(clicked()), this, SLOT(entrainement()));
    QWidget::connect(boutonhist, SIGNAL(clicked()), this, SLOT(historique()));
 }
@@ -50,16 +53,19 @@ bool Window3::verificationID(QString user, QString password){
 
 void Window3::identifier(){
     bool ok = false;
-   QString username = QInputDialog::getText(this, " s'autentifier ", "quel est votre identifiant ? ",QLineEdit::Normal, QString(), &ok);
+    if (this->nom != ""){QMessageBox::information(this, "s'identifier ", "vous vous êtes déjà identifié");}
+    else{
+   QString username = QInputDialog::getText(this, " s'identifier ", "quel est votre identifiant ? ",QLineEdit::Normal, QString(), &ok);
    if (ok && !username.isEmpty()){
-       QString password = QInputDialog::getText(this, " s'autentifier ", "quel est votre mot de passe ? ",QLineEdit::Normal, QString(), &ok);
+       QString password = QInputDialog::getText(this, " s'identifier ", "quel est votre mot de passe ? ",QLineEdit::Normal, QString(), &ok);
        if(ok && !password.isEmpty()){
          if (verificationID(username, password)) {
-             this->username = username.toStdString();
-             QMessageBox::information(this, "s'autentifier", "Bonjour " + username);
+             this->nom = username.toStdString();
+             QMessageBox::information(this, "s'identifier", "Bonjour " + username);
          }
-         else QMessageBox::critical(this, "s'autentifier", "identifiant ou mot de passe incorects");
+         else QMessageBox::critical(this, "s'identifier", "identifiant ou mot de passe incorects");
        }
+    }
     }
 
 }
@@ -70,6 +76,15 @@ void Window3::entrainement(){
 
     w->show();
     m->show();
+}
+
+void Window3::historique(){}
+void Window3::deconnexion(){
+    if (this->nom != ""){
+        this->nom = "";
+        QMessageBox::information(this, "deconnexion", "vous avez bien été déconnecté");
+    }
+    else QMessageBox::information(this, "deconnexion", "vous n'étiez pas connecté");
 }
 
 Window3::~Window3(){
