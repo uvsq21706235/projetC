@@ -5,8 +5,11 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QPushButton>
+#include <QTextEdit>
 #include "simulateur.h"
 #include "mainwindow.h"
+#include "mywidget.h"
+
 
 class Window2 : public QMainWindow{
 
@@ -35,6 +38,8 @@ private :
     QString nom;
     Simulateur s;
 
+    QString info;
+
  //  CustomButton  * m_customBtn;
 
     QList<QPushButton*> m_listBtn;
@@ -43,6 +48,7 @@ private :
     QVBoxLayout * m_vLayout2;
     QVBoxLayout * m_vLayout3;
     QVBoxLayout * m_vLayoutbis;
+    QHBoxLayout *text;
     QHBoxLayout * m_hLayout;
     QHBoxLayout * m_hLayout1;
     QWidget * m_mainWidget;

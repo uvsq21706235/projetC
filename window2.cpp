@@ -1,11 +1,14 @@
 #include "window2.h"
 #include <QDebug>
 #include <QFrame>
+#include <QLabel>
+#include <QLayout>
 #include <simulateur.h>
 
 Window2::Window2(Simulateur &simi, QWidget *parent) : QMainWindow(parent)
 {
      this->s = simi;
+     info = "hello word !";
     setWindowTitle("Simulateur d'avion de chasse ");
   //  m_customBtn = new CustomButton(this);
 
@@ -17,8 +20,17 @@ Window2::Window2(Simulateur &simi, QWidget *parent) : QMainWindow(parent)
     m_vLayout3 = new QVBoxLayout(this);
     m_vLayoutbis = new QVBoxLayout(this);
 
+
+    text = new QHBoxLayout(this);
     m_hLayout = new QHBoxLayout(this);
     m_hLayout1 = new QHBoxLayout(this);
+
+    QTextEdit *txt = new QTextEdit();
+    txt->setText(s.getEtat());
+    text->addWidget(txt);
+
+    txt->setReadOnly(true);
+
 
     QPushButton *vidangeR1 = new QPushButton( "Vidange Reservoir Tank 1", m_mainWidget );
     QPushButton *vidangeR2 = new QPushButton("Vidange Reservoir Tank 2",  m_mainWidget);
@@ -65,9 +77,11 @@ Window2::Window2(Simulateur &simi, QWidget *parent) : QMainWindow(parent)
    m_hLayout->addLayout(m_vLayout1);
    m_hLayout->addLayout(m_vLayout2);
    m_hLayout->addLayout(m_vLayout3);
+   m_hLayout->addLayout(text);
 
    m_mainWidget->setLayout(m_hLayout);
-  setCentralWidget(m_mainWidget);
+   setCentralWidget(m_mainWidget);
+
 
    //Connection boutons et classe -> Vidange
     QWidget::connect(vidangeR1, SIGNAL(clicked()), this, SLOT(VidangeReservoir1()) );

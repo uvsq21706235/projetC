@@ -89,6 +89,8 @@ public :
     int  getEtatReservoirR1();
     int  getEtatReservoirR2();
     int  getEtatReservoirR3();
+
+    QString getEtat();
 };
 
 #endif // SIMULATEUR_H
