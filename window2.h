@@ -1,7 +1,6 @@
 #ifndef WINDOW2_H
 #define WINDOW2_H
 #include <QMainWindow>
-
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QPushButton>

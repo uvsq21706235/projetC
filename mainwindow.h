@@ -2,20 +2,18 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QMessageBox>
+
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QPushButton>
 #include "simulateur.h"
-#include "window2.h"
-
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(Simulateur &simi, QWidget *parent = nullptr);
+    MainWindow(Simulateur &S, QWidget *parent = nullptr);
 
     ~MainWindow();
 public slots:

@@ -40,8 +40,6 @@ Window2::Window2(Simulateur &simi, QWidget *parent) : QMainWindow(parent)
     vidangeR3->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 
 
-
-
     QPushButton *pannep11 = new QPushButton("panne Pompe 11", m_mainWidget);
     QPushButton *pannep12 = new QPushButton("panne Pompe 12", m_mainWidget);
     QPushButton *panne21 = new QPushButton( "panne Pompe 21", m_mainWidget);
@@ -136,5 +134,6 @@ void  Window2::PannePompe21(){s.ex_pannepompe21();
  void  Window2::PannePompe32(){s.ex_pannepompe32();
                                update();
                                QMessageBox::critical(this, "  Exercice pilote ", "Injection Panne dans la pompe P32 ");}
+
 
  Window2::~Window2(){};
