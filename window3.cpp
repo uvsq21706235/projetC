@@ -1,4 +1,5 @@
 #include "window3.h"
+#include <QWidget>
 
 Window3::Window3(Simulateur &simi, QWidget *parent)
 {

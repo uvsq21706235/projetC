@@ -7,6 +7,7 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 #include "simulateur.h"
+#include <QWidget>
 
 class MainWindow : public QMainWindow
 {
