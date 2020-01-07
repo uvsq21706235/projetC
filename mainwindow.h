@@ -2,19 +2,20 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <QMessageBox>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QPushButton>
 #include "simulateur.h"
-#include <QWidget>
+#include "window2.h"
+
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(Simulateur &S, QWidget *parent = nullptr);
+    MainWindow(Simulateur &simi, QWidget *parent = nullptr);
 
     ~MainWindow();
 public slots:
@@ -33,6 +34,7 @@ public slots:
 private :
     QString nom;
     Simulateur s;
+ //   Window2 *window;
 
  //  CustomButton  * m_customBtn;
 

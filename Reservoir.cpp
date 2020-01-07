@@ -17,8 +17,8 @@ using namespace std;
         //permet de vider le reservoir
     void Reservoir :: vidange(){
         capacite = 0;
-        primaire->etat = 0;
-        secondaire->etat = 0;
+       // primaire->etat = 0;
+       // secondaire->etat = 0;
          qDebug()<<"Vidange du Reservoir  " << nom << endl;
 
     }
@@ -31,6 +31,7 @@ using namespace std;
         if(capacite) return true;
         return false;
     }
+
 
     int Reservoir::get_etat_pompe_primaire(){
         return primaire->etat;
@@ -52,53 +53,6 @@ using namespace std;
         capacite = i;
     }
 
-        //permet d'equilibrer les reservoirs
-    void Reservoir::equilibre_res(const Vanne &v12, const Vanne &v23, Reservoir &r2, Reservoir &r3){
-        int glob;
-        if (v12.etat) {
-            if (v23.etat){
-                glob = this->capacite + r2.get_etatReservoir() + r3.get_etatReservoir();
-                if (glob/3 < MAX2){
-                    this->capacite = glob;
-                    r2.set_capacite(glob);
-                    r3.set_capacite(glob);
-                }
-                else{
-                    r2.set_capacite(MAX2);
-                    glob = (glob-MAX2)/2;
-                    this->capacite = glob;
-                    r3.set_capacite(glob);
-
-                }
-            }
-            else {
-                glob = this->capacite + r2.get_etatReservoir();
-                if (glob/2 < MAX2){
-                    r2.set_capacite(glob/2);
-                    this->capacite = glob/2;
-                }
-                else{
-                    r2.set_capacite(MAX2);
-                    this->capacite = glob-MAX2;
-                }
-            }
-        }
-        else{
-            if (v23.etat){
-                glob = r3.get_etatReservoir() + r2.get_etatReservoir();
-                if (glob/2 < MAX2){
-                    r2.set_capacite(glob/2);
-                    r3.set_capacite(glob/2);
-                }
-                else{
-                    r2.set_capacite(MAX2);
-                    r3.set_capacite(glob-MAX2);
-                }
-            }
-        }
-
-
-    }
 
 
         // destructeur de la classe Reservoir

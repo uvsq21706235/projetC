@@ -23,8 +23,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     simulateur.cpp \
-    window2.cpp \
-    window3.cpp
+    window2.cpp
 
 HEADERS += \
     Pompe.h \
@@ -33,14 +32,9 @@ HEADERS += \
     Vanne.h \
     mainwindow.h \
     simulateur.h \
-    window2.h \
-    window3.h
+    window2.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-DISTFILES += \
-    user \
-    user.txt

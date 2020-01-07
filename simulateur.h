@@ -12,8 +12,8 @@
 
 #include <iostream>
 
-
-
+#define MAX13 120
+#define MAX2 90
 class Simulateur
 {
  private :
@@ -65,10 +65,14 @@ public slots :
     void ex_pannepompe32();
 
 
+
+
 public :
     Simulateur();
    // Simulateur(Moteur * m1, Moteur * m2, Moteur *m3 );
     ~Simulateur();
+    //permet d'equilibrer les reservoirs
+    void equilibre_res();
 
     int getEtatVanneVT12();
     int getEtatVanneVT23();

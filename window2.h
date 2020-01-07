@@ -1,6 +1,7 @@
 #ifndef WINDOW2_H
 #define WINDOW2_H
 #include <QMainWindow>
+
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QPushButton>
@@ -10,17 +11,34 @@
 
 
 class Window2 : public QMainWindow{
+    friend class MainWindow;
 
     Q_OBJECT
 
 public:
     Window2(Simulateur &simi ,QWidget *parent = nullptr);
-    void update();
+
 
     ~Window2();
 public slots:
 
+
+    //exercice
+    void simu_exercice1();
+    void simu_exercice2();
+    void simu_exercice3();
+    void simu_exercice4();
+    void simu_exercice5();
+    void simu_exercice6();
+    void simu_exercice7();
+    void simu_exercice8();
+    void simu_exercice9();
+    void simu_exercice10();
+
+    //actualiser
+      void update();
    //vidange reservoir
+    void  equilibrage();
     void  VidangeReservoir1();
     void  VidangeReservoir2();
     void  VidangeReservoir3();
@@ -45,6 +63,8 @@ private :
     QVBoxLayout * m_vLayout1;
     QVBoxLayout * m_vLayout2;
     QVBoxLayout * m_vLayout3;
+    QVBoxLayout * m_vLayout4;
+    QVBoxLayout * m_vLayout5;
     QVBoxLayout * m_vLayoutbis;
     QHBoxLayout *text;
     QHBoxLayout * m_hLayout;

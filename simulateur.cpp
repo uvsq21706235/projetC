@@ -11,9 +11,9 @@ Simulateur::Simulateur()
         p31 = new Pompe("p31",1);
         p32 = new Pompe("p32");
 
-        r1 = new Reservoir(100, "Tank1", p11, p12);
-        r2 = new Reservoir(50, "Tank2", p21, p22);
-        r3 = new Reservoir(100, "Tank3", p32, p32);
+        r1 = new Reservoir(1000, "Tank1", p11, p12);
+        r2 = new Reservoir(5000, "Tank2", p21, p22);
+        r3 = new Reservoir(1000, "Tank3", p32, p32);
 
         m1 = new Moteur(*r1 );
         m2 = new Moteur(*r2);
@@ -27,8 +27,8 @@ Simulateur::Simulateur()
          V23 = new Vanne("V23");
 }
 
-        void Simulateur::infoVanneVT12() { VT12->power();}
-        void Simulateur::infoVanneVT23() { VT23->power();}
+        void Simulateur::infoVanneVT12() { VT12->power(); if (VT12->get_etat() ) equilibre_res();}
+        void Simulateur::infoVanneVT23() { VT23->power(); if (VT23->get_etat() ) equilibre_res();}
         void Simulateur::infoVanneV12()  { V12->power();}
         void Simulateur::infoVanneV13()  { V13->power();}
         void Simulateur::infoVanneV23()  { V23->power();}
@@ -90,8 +90,8 @@ Simulateur::Simulateur()
             else tmp +=  "tank3 est vide ! <br><br>";
 
             //initialisation avec l'etat des pompes
-            if (getEtatPompep11()==0) tmp += "pompe11 est a l'arrêt <br>";
-            else if(getEtatPompep11()==1) tmp += "pompe11 est en marche <br>";
+            if (getEtatPompep11() == 0) tmp += "pompe11 est a l'arrêt <br>";
+            else if(getEtatPompep11() == 1) tmp += "pompe11 est en marche <br>";
             else tmp += "pompe11 est en panne... <br>";
             if (getEtatPompep12()==0) tmp += "pompe12 est a l'arrêt <br>";
             else if(getEtatPompep12()==1) tmp += "pompe12 est en marche <br>";
@@ -112,16 +112,16 @@ Simulateur::Simulateur()
             else tmp += "pompe32 est en panne... <br><br>";
 
             //initialistion avec l'etat des vannes
-            if(getEtatVanneV12()) tmp += "vanneV12 est fermée <br>";
-            else tmp += "vanneV12 est ouverte <br>";
-            if(getEtatVanneV13()) tmp += "vanneV13 est fermée <br>";
-            else tmp += "vanneV13 est ouverte <br>";
-            if(getEtatVanneV23()) tmp += "vanneV23 est fermée <br>";
-            else tmp += "vanneV23 est ouverte <br>";
-            if(getEtatVanneVT12()) tmp += "vanneVT12 est fermée <br>";
-            else tmp += "vanneVT12 est ouverte <br>";
-            if(getEtatVanneVT23()) tmp += "vanneVT23 est fermée <br><br>";
-            else tmp += "vanneVT23 est ouverte <br><br>";
+            if(getEtatVanneV12()) tmp += "vanneV12 est ouverte <br>";
+            else tmp += "vanneV12 est fermée <br>";
+            if(getEtatVanneV13()) tmp += "vanneV13 est ouverte <br>";
+            else tmp += "vanneV13 est fermée <br>";
+            if(getEtatVanneV23()) tmp += "vanneV23 est ouverte <br>";
+            else tmp += "vanneV23 est fermée <br>";
+            if(getEtatVanneVT12()) tmp += "vanneVT12 est ouverte <br>";
+            else tmp += "vanneVT12 est fermée <br>";
+            if(getEtatVanneVT23()) tmp += "vanneVT23 est ouverte <br><br>";
+            else tmp += "vanneVT23 est fermee <br><br>";
 
             //initialisation avec l'etat des moteurs
             if(getPompeM1())tmp += "moteur1 approvisionné par la pompe primaire de " + getResM1() +"<br>";
@@ -138,6 +138,55 @@ Simulateur::Simulateur()
 
         //FLUX DE CHAQUE MOTEUR
         //(implementation)
+        //permet d'equilibrer les reservoirs
+    void Simulateur::equilibre_res(){
+        int glob;
+        if (VT12->get_etat()) {
+            if (VT23->get_etat()){
+                glob = r1->get_etatReservoir() + r2->get_etatReservoir() + r3->get_etatReservoir();
+                if (glob/3 < MAX2){
+                    r1->set_capacite(glob);
+                    r2->set_capacite(glob);
+                    r3->set_capacite(glob);
+                    qDebug() << glob<<endl;
+
+                }
+                else{
+                    r2->set_capacite(MAX2);
+                    glob = (glob-MAX2)/2;
+                    r1->set_capacite(glob);
+                    r3->set_capacite(glob);
+
+                }
+            }
+            else {
+                glob = r1->get_etatReservoir() + r2->get_etatReservoir();
+                if (glob/2 < MAX2){
+                    r2->set_capacite(glob/2);
+                    r1->set_capacite(glob/2);
+                }
+                else{
+                    r2->set_capacite(MAX2);
+                    r1->set_capacite(glob-MAX2);
+                }
+            }
+        }
+        else{
+            if (VT23->get_etat()){
+                glob = r3->get_etatReservoir() + r2->get_etatReservoir();
+                if (glob/2 < MAX2){
+                    r2->set_capacite(glob/2);
+                    r3->set_capacite(glob/2);
+                }
+                else{
+                    r2->set_capacite(MAX2);
+                    r3->set_capacite(glob-MAX2);
+                }
+            }
+        }
+
+
+    }
 
 Simulateur::~Simulateur(){}
 
