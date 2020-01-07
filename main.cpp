@@ -11,9 +11,8 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-        Simulateur s;
 
-        Window3 *f = new Window3(s);
+        Window3 *f = new Window3();
                f->show();
 
     return a.exec();

@@ -1,9 +1,8 @@
 #include "window3.h"
 #include <QWidget>
 
-Window3::Window3(Simulateur &simi, QWidget *parent)
+Window3::Window3(QWidget *parent)
 {
-    s = simi;
  //   MainWindow *mw= new MainWindow(s);
  //   Window3 *w = new Window3(s);
     setWindowTitle("Simulateur d'avion de chasse ");
@@ -73,6 +72,7 @@ void Window3::identifier(){
 
 void Window3::entrainement(){
     if (this->nom != ""){
+        Simulateur *s = new Simulateur(this->nom);
     Window2 *w = new Window2(s);
     MainWindow *m = new MainWindow(s);
 
@@ -84,9 +84,19 @@ void Window3::entrainement(){
 
 void Window3::historique(){
     if (this->nom != ""){
-    //visualisation historique
+        string path = "/home/user/Bureau/projet/exercice/" + nom + ".txt";
+        ifstream fichier(path);
+        if(fichier)
+        {
+
+                cout << "fichier ouvert!";
+         }
+         else
+                {
+                    cout << "ERREUR: Impossible d'ouvrir le fichier en lecture." << endl;
+                }
     }
-    else QMessageBox::critical(this, "entraînement", "veuillez vous connecter");
+    else QMessageBox::critical(this, "historique", "veuillez vous connecter");
 }
 
 

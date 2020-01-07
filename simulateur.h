@@ -16,6 +16,7 @@
 #define MAX2 90
 class Simulateur
 {
+    friend class Window2;
  private :
    Moteur *m1;
    Moteur *m2;
@@ -38,6 +39,7 @@ class Simulateur
    Vanne *V13;
    Vanne *V23;
 
+   string nom;
 
 public slots :
 
@@ -68,7 +70,7 @@ public slots :
 
 
 public :
-    Simulateur();
+    Simulateur(string nom);
    // Simulateur(Moteur * m1, Moteur * m2, Moteur *m3 );
     ~Simulateur();
     //permet d'equilibrer les reservoirs

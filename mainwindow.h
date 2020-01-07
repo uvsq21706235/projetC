@@ -15,7 +15,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(Simulateur &simi, QWidget *parent = nullptr);
+    MainWindow(Simulateur *simi, QWidget *parent = nullptr);
 
     ~MainWindow();
 public slots:
@@ -33,7 +33,7 @@ public slots:
 
 private :
     QString nom;
-    Simulateur s;
+    Simulateur *s;
  //   Window2 *window;
 
  //  CustomButton  * m_customBtn;

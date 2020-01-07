@@ -5,7 +5,7 @@
 #include <QLayout>
 #include <simulateur.h>
 
-Window2::Window2(Simulateur &simi, QWidget *parent) : QMainWindow(parent)
+Window2::Window2(Simulateur *simi, QWidget *parent) : QMainWindow(parent)
 {
      this->s = simi;
     setWindowTitle("Simulateur d'avion de chasse ");
@@ -28,7 +28,7 @@ Window2::Window2(Simulateur &simi, QWidget *parent) : QMainWindow(parent)
     m_hLayout1 = new QHBoxLayout(this);
 
     txt = new QTextEdit();
-    txt->setText(s.getEtat());
+    txt->setText(s->getEtat());
     text->addWidget(txt);
 
     txt->setReadOnly(true);
@@ -165,116 +165,251 @@ Window2::Window2(Simulateur &simi, QWidget *parent) : QMainWindow(parent)
 
 
 }
+void Window2::sauvegarde(string exo, int note){
+    string const cheminSave =  "/home/user/Bureau/projet/exercice/"+s->nom+".txt";
+    cout << cheminSave;
+       ofstream fichier(cheminSave.c_str(), ios::app);
+        //fichier.open (cheminSave, ofstream::out | ofstream::app);
+
+        if (fichier)
+          {
+            fichier << exo << " " << note << endl;
+
+           fichier.close();
+          }
+       else cout << "ERREUR: Impossible d'ouvrir le fichier." << endl;
+}
+
 void Window2::simu_exercice1(){
-          s.ex_pannepompe11();
-          s.ex_pannepompe31();
+          s->ex_pannepompe11();
+          s->ex_pannepompe31();
           update();
+          QMessageBox::critical(this, "  Exercice 1 ", "DEFAILLANCE !<br>Pompe primaire Tank 1 en panne.<br>Pompe primaire Tank 3 en panne.");
 
-          QMessageBox::critical(this, "  Exercice 1 ", "DEFAILLANCE !/nPompe primaire Tank 1 en panne.\nPompe primaire Tank 3 en panne.");
-
+    std::time_t start = std::time(NULL);
+    int note;
+    while( std::difftime(std::time(NULL), start) < 10){ QCoreApplication::processEvents(); update();}
+    if (s->p12->get_etat()==1 && s->p32->get_etat()==1) {
+        note = 1;
+        QMessageBox::critical(this, "  Exercice 1 ", "Bravo! <br> vous avez reussi!");
+    }
+    else {
+        note = 0;
+        QMessageBox::critical(this, "  Exercice 1 ", "echec <br> l'avion s'est ecrasé");
+    }
+    sauvegarde("exo1", note);
 }
 
 
 void Window2::simu_exercice2(){
-            s.ex_vidangeR1();
+            s->ex_vidangeR1();
             update();
-           QMessageBox::critical(this, "  Exercice 2 ", "VIDANGE !\nReservoir Tank 1 s'est vidé.");
+           QMessageBox::critical(this, "  Exercice 2 ", "VIDANGE !<br>Reservoir Tank 1 s'est vidé.");
+
+           std::time_t start = std::time(NULL);
+           int note;
+           while( std::difftime(std::time(NULL), start) < 10){ QCoreApplication::processEvents(); update();}
+           if (s->VT12->get_etat() == 1) {
+               note = 1;
+               QMessageBox::critical(this, "  Exercice 2 ", "Bravo! <br> vous avez reussi!");
+           }
+           else {
+               note = 0;
+               QMessageBox::critical(this, "  Exercice 2 ", "echec <br> l'avion s'est ecrasé");
+           }
+           sauvegarde("exo2", note);
 
 }
 void Window2::simu_exercice3(){
-        s.ex_pannepompe21();
+        s->ex_pannepompe21();
         update();
-      QMessageBox::critical(this, "  Exercice 3 ", "DEFAILLANCE \nPompe primaire Tank 2.");
+      QMessageBox::critical(this, "  Exercice 3 ", "DEFAILLANCE <br>Pompe primaire Tank 2.");
+      std::time_t start = std::time(NULL);
+      int note;
+      while( std::difftime(std::time(NULL), start) < 10){ QCoreApplication::processEvents(); update();}
+      if (s->p22->get_etat() == 1) {
+          note = 1;
+          QMessageBox::critical(this, "  Exercice 3 ", "Bravo! <br> vous avez reussi!");
+      }
+      else {
+          note = 0;
+          QMessageBox::critical(this, "  Exercice 3 ", "echec <br> l'avion s'est ecrasé");
+      }
+      sauvegarde("exo3", note);
 
 }
 void Window2::simu_exercice4(){
-            s.ex_vidangeR2();
-            s.ex_vidangeR3();
+            s->ex_vidangeR2();
+            s->ex_vidangeR3();
             update();
-           QMessageBox::critical(this, "  Exercice 4 ", "VIDANGE !\nReservoirs Tank 3 et Tank 2 se sont vidés.");
+           QMessageBox::critical(this, "  Exercice 4 ", "VIDANGE !<br>Reservoirs Tank 3 et Tank 2 se sont vidés.");
+           std::time_t start = std::time(NULL);
+           int note;
+           while( std::difftime(std::time(NULL), start) < 10){ QCoreApplication::processEvents(); update();}
+           if (s->VT12->get_etat() == 1 && s->VT23->get_etat() == 1) {
+               note = 1;
+               QMessageBox::critical(this, "  Exercice 4 ", "Bravo! <br> vous avez reussi!");
+           }
+           else {
+               note = 0;
+               QMessageBox::critical(this, "  Exercice 4 ", "echec <br> l'avion s'est ecrasé");
+           }
+           sauvegarde("exo4", note);
 
 }
 void Window2::simu_exercice5(){
-    s.ex_pannepompe11();
-    s.ex_pannepompe12();
+    s->ex_pannepompe11();
+    s->ex_pannepompe12();
     update();
-      QMessageBox::critical(this, "  Exercice 5 ", "DEFAILLANCE !\nPompe primaire et secondaire du reservoir Tank 1 en panne.");
+      QMessageBox::critical(this, "  Exercice 5 ", "DEFAILLANCE !<br>Pompe primaire et secondaire du reservoir Tank 1 en panne.");
+      std::time_t start = std::time(NULL);
+      int note;
+      while( std::difftime(std::time(NULL), start) < 10){ QCoreApplication::processEvents(); update();}
+      if ((s->p22->get_etat() == 1 && s->V12->get_etat() == 1) ||( s->p32->get_etat() == 1 && s->V13->get_etat() == 1)) {
+          note = 1;
+          QMessageBox::critical(this, "  Exercice 5 ", "Bravo! <br> vous avez reussi!");
+      }
+      else {
+          note = 0;
+          QMessageBox::critical(this, "  Exercice 5 ", "echec <br> l'avion s'est ecrasé");
+      }
+      sauvegarde("exo5", note);
 
 }
 void Window2::simu_exercice6(){
-        s.ex_pannepompe21();
-        s.ex_pannepompe31();
-        s.ex_pannepompe32();
+        s->ex_pannepompe21();
+        s->ex_pannepompe31();
+        s->ex_pannepompe32();
         update();
-           QMessageBox::critical(this, "  Exercice 6 ", "DEFAILLANCE !\nPompe primaire Tank 2 en panne.\n Pompe primaire et secondaire Tank 3 en panne.");
+           QMessageBox::critical(this, "  Exercice 6 ", "DEFAILLANCE !<br>Pompe primaire Tank 2 en panne.<br> Pompe primaire et secondaire Tank 3 en panne.");
+           std::time_t start = std::time(NULL);
+           int note;
+           while( std::difftime(std::time(NULL), start) < 10){ QCoreApplication::processEvents(); update();}
+           if (s->p12->get_etat() == 1 && s->p22->get_etat() == 1 && s->p32->get_etat() == 1) {
+               note = 1;
+               QMessageBox::critical(this, "  Exercice 6 ", "Bravo! <br> vous avez reussi!");
+           }
+           else {
+               note = 0;
+               QMessageBox::critical(this, "  Exercice 6 ", "echec <br> l'avion s'est ecrasé");
+           }
+           sauvegarde("exo6", note);
 
 }
 void Window2::simu_exercice7(){
-    s.ex_vidangeR3();
-    s.ex_vidangeR2();
-    s.ex_pannepompe11();
+    s->ex_vidangeR3();
+    s->ex_vidangeR2();
+    s->ex_pannepompe11();
     update();
-      QMessageBox::critical(this, "  Exercice 7 ", "VIDANGE et DEFAILLANCE !\nReservoirs Tank 2 et Tank 3 se sont vidés.\n  Pompe primaire Tank 1 en panne.");
+      QMessageBox::critical(this, "  Exercice 7 ", "VIDANGE et DEFAILLANCE !<br>Reservoirs Tank 2 et Tank 3 se sont vidés.<br>  Pompe primaire Tank 1 en panne.");
+      std::time_t start = std::time(NULL);
+      int note;
+      while( std::difftime(std::time(NULL), start) < 10){ QCoreApplication::processEvents(); update();}
+      if (s->VT12->get_etat() == 1 && s->VT23->get_etat() == 1 && s->p12->get_etat() == 1) {
+          note = 1;
+          QMessageBox::critical(this, "  Exercice 7 ", "Bravo! <br> vous avez reussi!");
+      }
+      else {
+          note = 0;
+          QMessageBox::critical(this, "  Exercice 7 ", "echec <br> l'avion s'est ecrasé");
+      }
+      sauvegarde("exo7", note);
 
 }
 void Window2::simu_exercice8(){
-    s.ex_vidangeR1();
-    s.ex_vidangeR3();
-    s.ex_pannepompe11();
+    s->ex_vidangeR1();
+    s->ex_vidangeR3();
+    s->ex_pannepompe12();
     update();
-           QMessageBox::critical(this, "  Exercice 8 ", "VIDANGE et DEFAILLANCE !\nReservoirs Tank 1 et Tank 3 se sont vidés.\n  Pompe primaire Tank 1 en panne.");
+           QMessageBox::critical(this, "  Exercice 8 ", "VIDANGE et DEFAILLANCE !<br>Reservoirs Tank 1 et Tank 3 se sont vidés.\<br>  Pompe primaire Tank 1 en panne.");
+           std::time_t start = std::time(NULL);
+           int note;
+           while( std::difftime(std::time(NULL), start) < 10){ QCoreApplication::processEvents(); update();}
+           if (s->VT12->get_etat() == 1 && s->VT23->get_etat() == 1 && s->p22->get_etat() == 1) {
+               note = 1;
+               QMessageBox::critical(this, "  Exercice 8 ", "Bravo! <br> vous avez reussi!");
+           }
+           else {
+               note = 0;
+               QMessageBox::critical(this, "  Exercice 8 ", "echec <br> l'avion s'est ecrasé");
+           }
+           sauvegarde("exo8", note);
 
 }
 void Window2::simu_exercice9(){
-      s.ex_vidangeR3();
+      s->ex_vidangeR3();
         update();
-      QMessageBox::critical(this, "  Exercice 9 ", "VIDANGE !\nReservoir Tank 3  s'est vidé." );
+      QMessageBox::critical(this, "  Exercice 9 ", "VIDANGE !<br>Reservoir Tank 3  s'est vidé." );
+      std::time_t start = std::time(NULL);
+      int note;
+      while( std::difftime(std::time(NULL), start) < 10){ QCoreApplication::processEvents(); update();}
+      if (s->VT23->get_etat() == 1) {
+          note = 1;
+          QMessageBox::critical(this, "  Exercice 9 ", "Bravo! <br> vous avez reussi!");
+      }
+      else {
+          note = 0;
+          QMessageBox::critical(this, "  Exercice 9 ", "echec <br> l'avion s'est ecrasé");
+      }
+      sauvegarde("exo9", note);
 
 }
 void Window2::simu_exercice10(){
-    s.ex_vidangeR1();
-    s.ex_pannepompe31();
-    s.ex_pannepompe32();
+    s->ex_vidangeR1();
+    s->ex_pannepompe31();
+    s->ex_pannepompe32();
       update();
-      QMessageBox::critical(this, "  Exercice 10 ", "VIDANGE et DEFAILLANCE !\nReservoirs Tank 1 s'est vidé.\nPompe primaire et secondaire Tank 3 en panne.");
+      QMessageBox::critical(this, "  Exercice 10 ", "VIDANGE et DEFAILLANCE !<br>Reservoirs Tank 1 s'est vidé.<br>Pompe primaire et secondaire Tank 3 en panne.");
+      std::time_t start = std::time(NULL);
+      int note;
+      while( std::difftime(std::time(NULL), start) < 10){ QCoreApplication::processEvents(); update();}
+      if (s->VT12->get_etat() == 1 && ((s->p22->get_etat() == 1 && s->V23->get_etat() == 1) || (s->p12->get_etat() == 1 && s->V13->get_etat() == 1))) {
+          note = 1;
+          QMessageBox::critical(this, "  Exercice 10 ", "Bravo! <br> vous avez reussi!");
+      }
+      else {
+          note = 0;
+          QMessageBox::critical(this, "  Exercice 10 ", "echec <br> l'avion s'est ecrasé");
+      }
+      sauvegarde("exo10", note);
 
 }
 
 
 void Window2::equilibrage(){
-                           s.equilibre_res();
+                           s->equilibre_res();
                               qDebug() << "glob"<<endl;
                         }
-void Window2::update(){txt->setText(s.getEtat());
+void Window2::update(){txt->setText(s->getEtat());
                        text->addWidget(txt);}
 //vidange reservoir
-void Window2::VidangeReservoir1(){ s.ex_vidangeR1();
+void Window2::VidangeReservoir1(){ s->ex_vidangeR1();
                                    update();
                                    QMessageBox::critical(this, "  Exercice pilote ", "Vidange du reservoir Tank 1 ");}
-void  Window2::VidangeReservoir2(){s.ex_vidangeR2();
+void  Window2::VidangeReservoir2(){s->ex_vidangeR2();
                                    update();
                                    QMessageBox::critical(this, "  Exercice pilote ", "Vidange du reservoir Tank 2 ");}
-void  Window2::VidangeReservoir3(){s.ex_vidangeR3();
+void  Window2::VidangeReservoir3(){s->ex_vidangeR3();
                                    update();
                                    QMessageBox::critical(this, "  Exercice pilote ", "Vidange du reservoir Tank 3 ");}
 
  //panne Pompe
-void  Window2::PannePompe11(){s.ex_pannepompe11();
+void  Window2::PannePompe11(){s->ex_pannepompe11();
                               update();
                               QMessageBox::critical(this, "  Exercice pilote ", "Injection Panne dans la pompe P11 ");}
-void  Window2::PannePompe12(){s.ex_pannepompe12();
+void  Window2::PannePompe12(){s->ex_pannepompe12();
                               update();
                               QMessageBox::critical(this, "  Exercice pilote ", "Injection Panne dans la pompe P12 ");}
-void  Window2::PannePompe21(){s.ex_pannepompe21();
+void  Window2::PannePompe21(){s->ex_pannepompe21();
                               update();
                               QMessageBox::critical(this, "  Exercice pilote ", "Injection Panne dans la pompe P21 ");}
- void  Window2::PannePompe22(){s.ex_pannepompe22();
+ void  Window2::PannePompe22(){s->ex_pannepompe22();
                                update();
                                QMessageBox::critical(this, "  Exercice pilote ", "Injection Panne dans la pompe P22 ");}
- void  Window2::PannePompe31(){s.ex_pannepompe31();
+ void  Window2::PannePompe31(){s->ex_pannepompe31();
                                update();
                                QMessageBox::critical(this, "  Exercice pilote ", "Injection Panne dans la pompe P31 ");}
- void  Window2::PannePompe32(){s.ex_pannepompe32();
+ void  Window2::PannePompe32(){s->ex_pannepompe32();
                                update();
                                QMessageBox::critical(this, "  Exercice pilote ", "Injection Panne dans la pompe P32 ");}
 

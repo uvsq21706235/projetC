@@ -1,8 +1,9 @@
 #include "simulateur.h"
 
 
-Simulateur::Simulateur()
+Simulateur::Simulateur(string nom)
     {
+        this->nom = nom;
 
         p11 = new Pompe( "p11",1);
         p12 = new Pompe("p12");

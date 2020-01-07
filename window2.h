@@ -8,7 +8,9 @@
 #include <QTextEdit>
 #include "simulateur.h"
 #include "mainwindow.h"
-
+#include <ctime>
+#include "QCoreApplication"
+#include "fstream"
 
 class Window2 : public QMainWindow{
     friend class MainWindow;
@@ -16,8 +18,8 @@ class Window2 : public QMainWindow{
     Q_OBJECT
 
 public:
-    Window2(Simulateur &simi ,QWidget *parent = nullptr);
-
+    Window2(Simulateur *simi ,QWidget *parent = nullptr);
+    void sauvegarde(string exo, int note);
 
     ~Window2();
 public slots:
@@ -53,7 +55,7 @@ public slots:
 
 private :
     QString nom;
-    Simulateur s;
+    Simulateur *s;
     QTextEdit *txt;
 
  //  CustomButton  * m_customBtn;
