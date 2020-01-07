@@ -88,8 +88,16 @@ void Window3::historique(){
         ifstream fichier(path);
         if(fichier)
         {
-
-                cout << "fichier ouvert!";
+            string resultat, mot;
+            int note = 0, nb = 0;
+            while(fichier >> mot) //Tant qu'on n'est pas à la fin, on lit
+            {
+                resultat += mot + " ";
+                fichier >> mot;
+                resultat += mot + "\n";
+                note += atoi(mot.c_str()); nb++;
+            }
+            cout << note << endl << nb << endl << resultat;
          }
          else
                 {
