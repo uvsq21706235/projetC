@@ -72,14 +72,24 @@ void Window3::identifier(){
 }
 
 void Window3::entrainement(){
+    if (this->nom != ""){
     Window2 *w = new Window2(s);
     MainWindow *m = new MainWindow(s);
 
     w->show();
     m->show();
+    }
+    else QMessageBox::critical(this, "entraînement", "veuillez vous connecter");
 }
 
-void Window3::historique(){}
+void Window3::historique(){
+    if (this->nom != ""){
+    //visualisation historique
+    }
+    else QMessageBox::critical(this, "entraînement", "veuillez vous connecter");
+}
+
+
 void Window3::deconnexion(){
     if (this->nom != ""){
         this->nom = "";

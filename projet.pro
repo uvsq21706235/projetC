@@ -23,7 +23,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     simulateur.cpp \
-    window2.cpp
+    window2.cpp \
+    window3.cpp
 
 HEADERS += \
     Pompe.h \
@@ -32,7 +33,8 @@ HEADERS += \
     Vanne.h \
     mainwindow.h \
     simulateur.h \
-    window2.h
+    window2.h \
+    window3.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

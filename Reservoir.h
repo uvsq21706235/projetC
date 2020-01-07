@@ -9,7 +9,8 @@
 
 using namespace std;
 
-
+#define MAX13 120
+#define MAX2 90
 
 class Reservoir{
     friend class Moteur;
@@ -46,7 +47,8 @@ public:
         //permet de vider le reservoir
     void vidange();
 
-
+        //permet d'equilibrer les reservoirs
+    void equilibre_res(const Vanne &v12, const Vanne &v23, Reservoir &r1, Reservoir &r2);
 
         //destructeur de la classe Reservoir
     ~Reservoir();
